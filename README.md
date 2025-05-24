@@ -24,9 +24,31 @@ Implementar e comparar diferentes algoritmos de ordenação em C, avaliando-os c
    git clone https://github.com/A-juli07/Analise_Comparacao_Ordenacao_AnaliseDeAlgoritmos.git
 
 2. **Gerar arquivos de entrada**
-```bash
+   ```bash
    gcc utils/gerar_entradas.c -o gerar_entradas
    ./gerar_entradas
 
-##
-Ana Julia Vieira P.A. Costa e Gabriel Menezes
+3. **Executar os algoritmos e salvar os dados**
+   ```bash
+   gcc utils/medir_performance.c algoritmos/*.c -o medir
+   ./medir
+
+4. **Gerar os gráficos (requer Python)**
+   ```bash
+   pip install pandas matplotlib
+   python graficos/graficos.py
+
+## Saída
+
+Arquivo CSV com resultados: resultados/resultados.csv
+
+Gráficos gerados na pasta graficos/:
+
+- tempo_random.png, comparacoes_random.png
+- tempo_sorted.png, comparacoes_sorted.png
+- tempo_reverse.png, comparacoes_reverse.png
+
+## Autores
+
+Ana Julia Vieira P.A. Costa
+Gabriel Menezes
