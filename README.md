@@ -11,6 +11,12 @@ Implementar e comparar diferentes algoritmos de ordenação em C, avaliando-os c
 - Merge Sort
 - Quick Sort
 
+## Tipos de entrada geradas
+
+- Ordenado crescente (`sorted`)
+- Ordenado decrescente (`reverse`)
+- Aleatório (`random`)
+
 ## Como Executar
 
 1. **Clone o repositório:**
