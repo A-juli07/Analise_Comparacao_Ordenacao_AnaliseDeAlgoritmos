@@ -25,9 +25,8 @@ Implementar e comparar diferentes algoritmos de ordenação em C, avaliando-os c
 
 2. **Gerar arquivos de entrada**
 ```bash
-gcc utils/gerar_entradas.c -o gerar_entradas
-./gerar_entradas
+   gcc utils/gerar_entradas.c -o gerar_entradas
+   ./gerar_entradas
 
 ##
-
 Ana Julia Vieira P.A. Costa e Gabriel Menezes
