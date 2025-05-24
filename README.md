@@ -23,6 +23,11 @@ Implementar e comparar diferentes algoritmos de ordenação em C, avaliando-os c
    ```bash
    git clone https://github.com/A-juli07/Analise_Comparacao_Ordenacao_AnaliseDeAlgoritmos.git
 
+2. **Gerar arquivos de entrada**
+```bash
+gcc utils/gerar_entradas.c -o gerar_entradas
+./gerar_entradas
+
 ##
 
 Ana Julia Vieira P.A. Costa e Gabriel Menezes
