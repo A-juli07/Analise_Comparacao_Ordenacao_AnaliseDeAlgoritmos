@@ -9,7 +9,7 @@ void insertion_sort(int *arr, int n, long long *comparacoes);
 void merge_sort(int *arr, int l, int r, long long *comparacoes);
 void quick_sort(int *arr, int l, int r, long long *comparacoes);
 
-#define REPETICOES 13
+#define REPETICOES 1
 
 // Leitura do arquivo
 int* ler_arquivo(const char *nome, int *tamanho) {
@@ -22,7 +22,8 @@ int* ler_arquivo(const char *nome, int *tamanho) {
     int capacidade = 1000;
     int *vetor = malloc(capacidade * sizeof(int));
     if (!vetor) {
-        fprintf(stderr, "Falha na alocacao de memoria\n");
+        fprintf(stderr, "Erro: falta de memoria ao alocar vetor\n");
+        fclose(fp);
         exit(1);
     }
 
@@ -30,7 +31,14 @@ int* ler_arquivo(const char *nome, int *tamanho) {
     while (fscanf(fp, "%d", &val) == 1) {
         if (count >= capacidade) {
             capacidade *= 2;
-            vetor = realloc(vetor, capacidade * sizeof(int));
+            int *novo = realloc(vetor, capacidade * sizeof(int));
+            if (!novo) {
+                fprintf(stderr, "Erro: realloc falhou\n");
+                free(vetor);
+                fclose(fp);
+                exit(1);
+            }
+            vetor = novo;
         }
         vetor[count++] = val;
     }
@@ -46,13 +54,13 @@ void copiar_array(int *origem, int *destino, int n) {
     }
 }
 
-// Executa o algoritmo REPETICOES vezes e tira media
 void testar_algoritmo(const char *arquivo, const char *algoritmo, FILE *saida) {
     int n;
     int *original = ler_arquivo(arquivo, &n);
     int *copia = malloc(n * sizeof(int));
     if (!copia) {
-        perror("Erro na alocacao");
+        fprintf(stderr, "Erro: nao foi possivel alocar memoria para copia (n = %d)\n", n);
+        free(original);
         exit(1);
     }
 
@@ -96,6 +104,8 @@ void testar_algoritmo(const char *arquivo, const char *algoritmo, FILE *saida) {
             (double)total_comparacoes / REPETICOES,
             total_tempo / REPETICOES);
 
+    fflush(saida);  // forca gravacao no disco
+
     free(original);
     free(copia);
 
@@ -111,7 +121,7 @@ int main() {
     int tamanhos[] = { 1000, 10000, 100000, 500000, 1000000 };
 
     printf("Iniciando testes de performance dos algoritmos...\n");
-    FILE *saida = fopen("resultados/resultados.csv", "w");
+    FILE *saida = fopen("resultados/resultados_3rep.csv", "w");
     if (!saida) {
         perror("Erro ao abrir arquivo CSV");
         return 1;
@@ -126,12 +136,13 @@ int main() {
                 sprintf(nome_arquivo, "entradas/entrada_%d_%s.txt", tamanhos[s], tipos[t]);
                 printf("Rodando %s em %s...\n", algoritmos[a], nome_arquivo);
                 testar_algoritmo(nome_arquivo, algoritmos[a], saida);
+                printf("----------\n");
             }
         }
     }
 
     fclose(saida);
-    printf("Todos os resultados foram salvos em 'resultados/resultados.csv'\n");
+    printf("Todos os resultados foram salvos em 'resultados/resultados_3rep.csv'\n");
     printf("Fim da execucao.\n");
     return 0;
 }
