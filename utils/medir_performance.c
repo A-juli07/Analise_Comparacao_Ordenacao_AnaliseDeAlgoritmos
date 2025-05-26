@@ -121,7 +121,7 @@ int main() {
     int tamanhos[] = { 1000, 10000, 100000, 500000, 1000000 };
 
     printf("Iniciando testes de performance dos algoritmos...\n");
-    FILE *saida = fopen("resultados/resultados_3rep.csv", "w");
+    FILE *saida = fopen("resultados/resultados.csv", "w");
     if (!saida) {
         perror("Erro ao abrir arquivo CSV");
         return 1;
