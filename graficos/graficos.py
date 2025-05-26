@@ -4,20 +4,20 @@ import seaborn as sns
 import os
 import numpy as np
 
-# Configurações de estilo melhoradas
+# Configurações otimizadas
 sns.set_style("whitegrid")
-plt.rcParams['figure.dpi'] = 100
-plt.rcParams['savefig.dpi'] = 100
+plt.rcParams['figure.dpi'] = 72  # Reduzido para evitar erros de tamanho
+plt.rcParams['savefig.dpi'] = 72
 plt.rcParams['font.size'] = 9
 plt.rcParams['axes.titlesize'] = 11
 plt.rcParams['axes.labelsize'] = 10
 
 def carregar_dados(caminho_arquivo):
-    """Carrega e prepara os dados com tratamento de erros"""
+    """Carrega e prepara os dados de forma segura"""
     try:
         df = pd.read_csv(caminho_arquivo)
         
-        # Verificação das colunas necessárias
+        # Verifica colunas essenciais
         colunas_necessarias = ['algoritmo', 'tipo', 'tamanho', 'comparacoes', 'tempo']
         if not all(col in df.columns for col in colunas_necessarias):
             raise ValueError("Arquivo CSV não contém todas as colunas necessárias")
@@ -27,12 +27,9 @@ def carregar_dados(caminho_arquivo):
         df['tipo'] = df['tipo'].map(tipo_trad)
         df['algoritmo'] = df['algoritmo'].str.title() + ' Sort'
         
-        # Converter tamanhos para categorias ordenadas
-        tamanhos_ordenados = sorted(df['tamanho'].unique())
+        # Converter tamanhos para strings e categorias ordenadas
         df['tamanho_str'] = df['tamanho'].astype(str)
-        df['tamanho_cat'] = pd.Categorical(df['tamanho_str'], 
-                                         categories=[str(t) for t in tamanhos_ordenados], 
-                                         ordered=True)
+        df['tamanho_cat'] = pd.Categorical(df['tamanho_str'], categories=sorted(df['tamanho_str'].unique()), ordered=True)
         
         return df
     
@@ -41,101 +38,73 @@ def carregar_dados(caminho_arquivo):
         return None
 
 def plotar_tempo_separado(df, output_dir):
-    """Gera gráficos de tempo com valores reais"""
+    """Gera gráficos de tempo otimizados"""
     if df is None:
         return
         
     tipos = df['tipo'].unique()
     
     for tipo in tipos:
-        fig, ax = plt.subplots(figsize=(10, 6))  # Tamanho um pouco maior
+        fig, ax = plt.subplots(figsize=(8, 5))  # Tamanho reduzido
         
         dados = df[df['tipo'] == tipo]
         
-        # Gráfico de linha com valores reais
+        # Gráfico de linha otimizado
         sns.lineplot(data=dados, x='tamanho_cat', y='tempo', 
                     hue='algoritmo', style='algoritmo',
-                    markers=['o', 's', 'D', '^'],  # Marcadores diferentes para cada algoritmo
-                    dashes=False, linewidth=2,
-                    markersize=8, errorbar=None, ax=ax)
+                    markers=['o', 's', 'D', '^'],  # Marcadores diferentes
+                    dashes=False, linewidth=1.5,
+                    markersize=6, errorbar=None, ax=ax)
         
-        # Adicionar valores exatos nos pontos
-        for algo in dados['algoritmo'].unique():
-            subset = dados[dados['algoritmo'] == algo]
-            for i, row in subset.iterrows():
-                # Formata o tempo de forma inteligente
-                tempo_str = f"{row['tempo']:.3f}s" if row['tempo'] >= 0.001 else f"{row['tempo']:.1e}s"
-                ax.text(row['tamanho_cat'], row['tempo'] * 1.05, 
-                       tempo_str, 
-                       ha='center', fontsize=8, color='black')
+        # Ajustes de escala
+        max_tempo = dados['tempo'].max()
+        if max_tempo > 1:
+            ax.set_yscale('log')
+            ax.set_ylabel('Tempo (s) - Escala Log')
+        else:
+            ax.set_ylabel('Tempo (s)')
         
         # Configurações do gráfico
         ax.set_title(f'Tempo de Execução - Entrada {tipo}', pad=15)
         ax.set_xlabel('Tamanho do Vetor')
-        ax.set_ylabel('Tempo (segundos)')
         ax.legend(title='Algoritmo', bbox_to_anchor=(1.05, 1), loc='upper left')
         ax.grid(True, linestyle=':', alpha=0.7)
         
-        # Ajuste automático dos limites do eixo Y
-        y_max = dados['tempo'].max() * 1.2
-        ax.set_ylim(0, y_max if y_max > 0 else 1)
-        
         # Salvar figura
         nome_arquivo = os.path.join(output_dir, f"tempo_{tipo.lower()}.png")
-        plt.savefig(nome_arquivo, bbox_inches='tight', pad_inches=0.5)
+        plt.savefig(nome_arquivo, bbox_inches='tight', pad_inches=0.3)
         plt.close(fig)
         print(f"Gráfico salvo: {nome_arquivo}")
 
 def plotar_comparacoes_agrupadas(df, output_dir):
-    """Gráficos de comparações com valores reais"""
+    """Gráficos de comparações otimizados"""
     if df is None:
         return
         
     tipos = df['tipo'].unique()
     
     for tipo in tipos:
-        fig, ax = plt.subplots(figsize=(12, 7))  # Tamanho maior para acomodar os valores
+        fig, ax = plt.subplots(figsize=(8, 5))  # Tamanho reduzido
         
         dados = df[df['tipo'] == tipo]
         
-        # Gráfico de barras com valores reais
-        barplot = sns.barplot(data=dados, x='tamanho_cat', y='comparacoes', 
-                            hue='algoritmo', palette='muted', ax=ax)
+        # Gráfico de barras otimizado
+        sns.barplot(data=dados, x='tamanho_cat', y='comparacoes', 
+                   hue='algoritmo', palette='muted', ax=ax)
         
-        # Adicionar valores nas barras (formatados de forma inteligente)
-        for p in barplot.patches:
-            if p.get_height() > 0:
-                # Formatação condicional para números grandes
-                if p.get_height() > 1e6:
-                    texto = f"{p.get_height()/1e6:.1f}M"
-                elif p.get_height() > 1e3:
-                    texto = f"{p.get_height()/1e3:.1f}K"
-                else:
-                    texto = f"{p.get_height():.0f}"
-                
-                ax.annotate(texto, 
-                           (p.get_x() + p.get_width() / 2., p.get_height()),
-                           ha='center', va='center', xytext=(0, 5),
-                           textcoords='offset points', fontsize=8)
+        # Escala logarítmica obrigatória para comparações
+        ax.set_yscale('log')
+        ax.set_ylabel('Número de Comparações (log)')
         
         # Configurações do gráfico
         ax.set_title(f'Comparações Realizadas - Entrada {tipo}', pad=15)
         ax.set_xlabel('Tamanho do Vetor')
-        ax.set_ylabel('Número de Comparações')
         ax.legend(title='Algoritmo', bbox_to_anchor=(1.05, 1), loc='upper left')
         ax.grid(True, axis='y', linestyle=':', alpha=0.7)
         
-        # Ajuste automático dos limites do eixo Y
-        y_max = dados['comparacoes'].max() * 1.1
-        ax.set_ylim(0, y_max if y_max > 0 else 1)
-        
-        # Rotacionar rótulos do eixo X se necessário
-        if len(dados['tamanho_cat'].unique()) > 5:
-            plt.xticks(rotation=45)
-        
         # Salvar figura
         nome_arquivo = os.path.join(output_dir, f"comparacoes_{tipo.lower()}.png")
-        plt.savefig(nome_arquivo, bbox_inches='tight', pad_inches=0.5)
+        plt.savefig(nome_arquivo, bbox_inches='tight', pad_inches=0.3)
         plt.close(fig)
         print(f"Gráfico salvo: {nome_arquivo}")
 
@@ -154,7 +123,7 @@ def main():
         print(f"Erro: Arquivo não encontrado - {arquivo_resultados}")
         return
     
-    print("\nIniciando geração de gráficos com valores reais...")
+    print("\nIniciando geração de gráficos...")
     
     # Carregar dados
     df = carregar_dados(arquivo_resultados)
