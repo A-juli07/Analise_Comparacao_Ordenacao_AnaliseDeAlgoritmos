@@ -41,4 +41,4 @@ for tipo in tipos:
     plt.tight_layout()
     plt.savefig(f'graficos/comparacoes_{tipo}.png')
 
-print("✅ Gráficos salvos na pasta 'graficos/'")
+print("Gráficos salvos na pasta 'graficos/'")
