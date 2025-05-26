@@ -9,7 +9,7 @@ void insertion_sort(int *arr, int n, long long *comparacoes);
 void merge_sort(int *arr, int l, int r, long long *comparacoes);
 void quick_sort(int *arr, int l, int r, long long *comparacoes);
 
-#define REPETICOES 1
+#define REPETICOES 3
 
 // Leitura do arquivo
 int* ler_arquivo(const char *nome, int *tamanho) {
@@ -109,7 +109,7 @@ void testar_algoritmo(const char *arquivo, const char *algoritmo, FILE *saida) {
     free(original);
     free(copia);
 
-    printf("Concluido: %s em %s\nMedia de comparacoes: %.2f\nTempo medio: %.6f s\n\n",
+    printf("Concluido: %s em %s\nMedia de comparacoes: %.2f\nTempo medio: %.10f s\n\n",
            algoritmo, arquivo,
            (double)total_comparacoes / REPETICOES,
            total_tempo / REPETICOES);
@@ -121,7 +121,7 @@ int main() {
     int tamanhos[] = { 1000, 10000, 100000, 500000, 1000000 };
 
     printf("Iniciando testes de performance dos algoritmos...\n");
-    FILE *saida = fopen("resultados/resultados.csv", "w");
+    FILE *saida = fopen("resultados/resultados_3rep.csv", "w");
     if (!saida) {
         perror("Erro ao abrir arquivo CSV");
         return 1;
