@@ -117,7 +117,7 @@ def main():
     os.makedirs(output_dir, exist_ok=True)
     
     # Caminho do arquivo de dados
-    arquivo_resultados = os.path.join(script_dir, '../resultados/resultados.csv')
+    arquivo_resultados = os.path.join(script_dir, '../resultados/resultados_3rep.csv')
     
     if not os.path.exists(arquivo_resultados):
         print(f"Erro: Arquivo não encontrado - {arquivo_resultados}")
