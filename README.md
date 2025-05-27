@@ -39,7 +39,9 @@ Implementar e comparar diferentes algoritmos de ordenação em C, avaliando-os c
    python graficos/graficos.py
 
 ## Ambiente de Execução
-A FAZER
+Os testes foram executados em um ambiente contendo Sistema Operacional
+Windows 11 Home 64 bits. Nossa plataforma de testes foi um computador com processador Processador AMD Ryzen 5 5600, 3.5GHz (4.4GHz Turbo), 6-Cores 12-Threads,
+Memória DDR4, 16GB, 3733Mhz, SSD 500GB Leitura 4800MBs e Gravação 2700MBs e Placa de Vídeo MSI NVIDIA GeForce RTX 3060 VENTUS 2X OC, LHR, 12GB GDDR6, DLSS, Ray Tracing.
 
 ## Saída
 
