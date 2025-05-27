@@ -38,6 +38,9 @@ Implementar e comparar diferentes algoritmos de ordenação em C, avaliando-os c
    pip install pandas matplotlib
    python graficos/graficos.py
 
+## Ambiente de Execução
+A FAZER
+
 ## Saída
 
 Arquivo CSV com resultados: resultados/resultados.csv
