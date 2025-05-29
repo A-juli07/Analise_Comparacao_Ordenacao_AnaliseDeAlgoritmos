@@ -117,7 +117,9 @@ Só vale recorrer ao quadrático se você tiver listas bem pequenas ou quase ord
 ![Entrada Ordenada](graficos/resultados_graficos_5rep/tempo_ordenado.png)
 
 **Insertion Sort**: Tempo em torno de 1 ms mesmo para vetor de 1 000 000 elementos (faz apenas _n–1_ comparações).
+
 **Bubble Sort**: Crescimento quadrático sem “break” antecipado, alcançando entre 100 s e 1000 s para 1 000 000 elementos.
+
 **Merge Sort** e **Quick Sort**: ~0,01 s a 0,1 s em 100 000 elementos, 1 s a 10 s em 1 000 000 elementos. **Quick Sort** é ligeiramente mais rápido que Merge Sort (menor sobrecarga de mesclagem).
 
 #### Entrada Decrescente
@@ -125,7 +127,9 @@ Só vale recorrer ao quadrático se você tiver listas bem pequenas ou quase ord
 ![Entrada Decrescente](graficos/resultados_graficos_5rep/tempo_decrescente.png)
 
 **Bubble Sort** e **Insertion Sort**: Pior caso quadrático, ambos chegam a 100 s–1000 s em 1 000 000 elementos (Bubble Sort um pouco mais lento).
+
 **Quick Sort**: ~0,01 s a 0,1 s em 100 000 elementos, 1 s a 10 s em 1 000 000 elementos. Sofre maior variação por pivôs desequilibrados.
+
 **Merge Sort**: Comportamento estável O(𝑛 log 𝑛): ~0,1 s em 100 000 elementos e alguns segundos em 1 000 000, sempre ligeiramente acima do Quick Sort.
 
 #### Entrada Aleatória
@@ -133,7 +137,9 @@ Só vale recorrer ao quadrático se você tiver listas bem pequenas ou quase ord
 ![Entrada Aleatória](graficos/resultados_graficos_5rep/tempo_aleatório.png)
 
 **Bubble Sort** e **Insertion Sort**: Impraticáveis para vetores grandes: Bubble Sort chega a 100 s–1000 s e Insertion Sort a dezenas de segundos em 1 000 000 elementos.
+
 **Quick Sort**: 1 ms–10 ms em 100 000 elementos, ~1 s em 1 000 000 elementos. Melhor performance média entre os O(𝑛 log 𝑛).
+
 **Merge Sort**: ~10 ms–100 ms em 100 000 elementos, 1 s–10 s em 1 000 000 elementos. Levemente mais lento que Quick Sort, mas ainda muito mais rápido que quadráticos.
 
 #### Insights Geral 
