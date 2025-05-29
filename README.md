@@ -77,7 +77,7 @@ Gráficos gerados na pasta graficos/:
 ### Número de Comparações(log) X Tamanho do Vetor
 - Entrada Ordenada
   
-![comparações ordenadas](graficos/resultados_graficos_5rep/comparacoes_ordenado.png)
+![Entrada Ordenada](graficos/resultados_graficos_5rep/comparacoes_ordenado.png)
   
 **Insertion Sort** destaca-se: faz apenas ~𝑛–1 comparações (linear), ficando absurdamente abaixo de todos os demais no eixo log.
 
@@ -85,9 +85,25 @@ Gráficos gerados na pasta graficos/:
 
 **Merge Sort e Quick Sort** apresentam comportamento típico O(𝑛 log 𝑛), quase sobrepostos no gráfico, com Quick Sort ligeiramente acima de Merge (devido às pequenas variações no particionamento), mas ambos muito mais eficientes que Bubble/Insertion para grandes 𝑛.
 
-- Vetor Ordenado
+- Entrada Decrescente
 
-- Vetor Ordenado
+![Entrada Decrescente](graficos/resultados_graficos_5rep/comparacoes_decrescente.png)
+  
+**Insertion Sort** sofre o seu pior caso: também O(𝑛²), fazendo quase tantas comparações quanto o **Bubble Sort**. No gráfico, Bubble e Insertion praticamente coincidem, ambos estourando no topo.
+
+**Quick Sort** ainda mantém O(𝑛 log 𝑛) médio, mas cresce um pouco mais que Merge Sort (que é estável O(𝑛 log 𝑛) sempre), pois a escolha de pivô no pior caso decrescente pode gerar partições desequilibradas.
+
+**Merge Sort** mantém-se mais baixo que Quick Sort e muito abaixo dos quadráticos, reafirmando sua robustez contra ordenações adversas.
+
+- Entrada Aleatória
+
+![Entrada Aleatória](graficos/resultados_graficos_5rep/comparacoes_ordenado.png)
+
+**Bubble Sort e Insertion Sort** continuam O(𝑛²), com Bubble sempre pior que Insertion para todos os tamanhos. Mesmo com vetores de meio milhão, suas curvas disparam no eixo log.
+
+**Merge Sort e Quick Sort** mostram novamente curvas alinhadas em O(𝑛 log 𝑛): Quick Sort um pouco acima de Merge em média, mas ambos escalando com muito mais eficiência.
+
+A distância entre os quadráticos e os log-lineares ilustra claramente o ponto de ruptura onde algoritmos O(𝑛²) deixam de ser viáveis em entradas grandes, enquanto O(𝑛 log 𝑛) se mantém confortável.
 
 ## Autores
 
