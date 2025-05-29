@@ -19,35 +19,18 @@ Implementar e comparar diferentes algoritmos de ordenação em C, avaliando-os c
 
 ## Estrutura de Diretórios
 
-ordenacao/
-├── algoritmos/              # Algoritmos de ordenacao em C
-│   ├── bubble_sort.c
-│   ├── insertion_sort.c
-│   ├── merge_sort.c
-│   └── quick_sort.c
-│
-├── entradas/                # Arquivos de entrada gerados (sorted, random, reverse)
-│   ├── entrada_1000_sorted.txt
-│   ├── entrada_1000_random.txt
-│   ├── entrada_1000_reverse.txt
-│   └── ... (ate 1.000.000)
-│
-├── resultados/              # Resultados dos testes em formato CSV
-│   └── resultados_3rep.csv
-│
-├── graficos/                # Graficos gerados e script Python
-│   ├── graficos.py
-│   ├── tempo_random.png
-│   ├── comparacoes_sorted.png
-│   └── ...
-│
-├── utils/                   # Utilitarios em C
-│   ├── gerar_entradas.c
-│   └── medir_performance.c
-│
-├── rodar_tudo.sh            # Script opcional para rodar tudo com um comando
-├── .gitignore               # Ignora arquivos temporarios/executaveis
-└── README.md 
+- Algoritmos : bubble_sort.c, insertion_sort.c, merge_sort.c, quick_sort.c;
+- Entradas : Entradas geradas como sorted, random e reverse entre 1000, 10000, 100000, 500000, 1000000;
+- Graficos :
+     - graficos.py : Codigo para criação dos graficos.
+     - resultados_graficos : Primeiro arquivo de teste
+     - resultados_graficos_5rep : Primeiro arquivo de resultados com 5rep
+- Resultados:
+     - resultados.csv : Rewsultados com 1rep
+     - resultados_3rep.csv : Resultados com 5rep
+- Utils:
+     - gerar_entradas.c : Gerador de entradas
+     - medir_performance.c : Medir a Performance
 
 ## Como Executar
 
@@ -87,5 +70,5 @@ Gráficos gerados na pasta graficos/:
 
 ## Autores
 
-Ana Julia Vieira P.A. Costa
+Ana Julia Vieira P.A. Costa e
 Gabriel Menezes
