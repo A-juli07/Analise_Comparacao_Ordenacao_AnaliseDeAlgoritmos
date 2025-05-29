@@ -19,21 +19,35 @@ Implementar e comparar diferentes algoritmos de ordenação em C, avaliando-os c
 
 ## Estrutura de Diretórios
 
-├── algoritmos/              # Implementações dos algoritmos em C
-    ├── bubble_sort.c
-    ├── insertion_sort.c
-    ├── merge_sort.c
-    ├── quick_sort.c
-├── entradas/                # Arquivos de entrada (listas de números)
-├── resultados/              # Arquivos com os dados coletados (CSV)
-    └── resultados_3rep.csv
-├── graficos/                # Script Python e imagens geradas
-    ├── graficos.py
-    ├── graficos.py
-├── utils/                   # Utilitários em C
-   ├── gerar_entradas.c     # Gera os arquivos da pasta entradas/
-   └── medir_performance.c # Executa os testes e salva o CSV
-
+ordenacao/
+├── algoritmos/              # Algoritmos de ordenacao em C
+│   ├── bubble_sort.c
+│   ├── insertion_sort.c
+│   ├── merge_sort.c
+│   └── quick_sort.c
+│
+├── entradas/                # Arquivos de entrada gerados (sorted, random, reverse)
+│   ├── entrada_1000_sorted.txt
+│   ├── entrada_1000_random.txt
+│   ├── entrada_1000_reverse.txt
+│   └── ... (ate 1.000.000)
+│
+├── resultados/              # Resultados dos testes em formato CSV
+│   └── resultados_3rep.csv
+│
+├── graficos/                # Graficos gerados e script Python
+│   ├── graficos.py
+│   ├── tempo_random.png
+│   ├── comparacoes_sorted.png
+│   └── ...
+│
+├── utils/                   # Utilitarios em C
+│   ├── gerar_entradas.c
+│   └── medir_performance.c
+│
+├── rodar_tudo.sh            # Script opcional para rodar tudo com um comando
+├── .gitignore               # Ignora arquivos temporarios/executaveis
+└── README.md 
 
 ## Como Executar
 
