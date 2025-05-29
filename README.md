@@ -72,6 +72,15 @@ Gráficos gerados na pasta graficos/:
 - tempo_sorted.png, comparacoes_sorted.png
 - tempo_reverse.png, comparacoes_reverse.png
 
+## Insights dos Resultados
+
+- Comparações Ordenadas ![comparações ordenadas](.graficos/resultados_graficos_5rep/comparacoes_ordenado.png)
+**Insertion Sort** destaca-se: faz apenas ~𝑛–1 comparações (linear), ficando absurdamente abaixo de todos os demais no eixo log.
+
+**Bubble Sort** continua O(𝑛²) mesmo em vetor já ordenado (pois a implementação não interrompe cedo), explodindo no número de comparações conforme 𝑛 cresce.
+
+**Merge Sort e Quick Sort** apresentam comportamento típico O(𝑛 log 𝑛), quase sobrepostos no gráfico, com Quick Sort ligeiramente acima de Merge (devido às pequenas variações no particionamento), mas ambos muito mais eficientes que Bubble/Insertion para grandes 𝑛.
+
 ## Autores
 
 Ana Julia Vieira P.A. Costa e
