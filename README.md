@@ -75,7 +75,8 @@ Gráficos gerados na pasta graficos/:
 ## Insights dos Resultados
 
 ### Número de Comparações(log) X Tamanho do Vetor
-- Vetor Ordenado
+- Entrada Ordenada
+  
 ![comparações ordenadas](graficos/resultados_graficos_5rep/comparacoes_ordenado.png)
   
 **Insertion Sort** destaca-se: faz apenas ~𝑛–1 comparações (linear), ficando absurdamente abaixo de todos os demais no eixo log.
