@@ -74,7 +74,7 @@ Gráficos gerados na pasta graficos/:
 
 ## Insights dos Resultados
 
-- Comparações Ordenadas ![comparações ordenadas](.graficos/resultados_graficos_5rep/comparacoes_ordenado.png)
+- Comparações Ordenadas ![comparações ordenadas](graficos/resultados_graficos_5rep/comparacoes_ordenado.png)
 **Insertion Sort** destaca-se: faz apenas ~𝑛–1 comparações (linear), ficando absurdamente abaixo de todos os demais no eixo log.
 
 **Bubble Sort** continua O(𝑛²) mesmo em vetor já ordenado (pois a implementação não interrompe cedo), explodindo no número de comparações conforme 𝑛 cresce.
