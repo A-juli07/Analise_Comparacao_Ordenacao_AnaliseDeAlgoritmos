@@ -9,7 +9,7 @@ void insertion_sort(int *arr, int n, long long *comparacoes);
 void merge_sort(int *arr, int l, int r, long long *comparacoes);
 void quick_sort(int *arr, int l, int r, long long *comparacoes);
 
-#define REPETICOES 3
+#define REPETICOES 5
 
 // Leitura do arquivo
 int* ler_arquivo(const char *nome, int *tamanho) {
@@ -121,7 +121,7 @@ int main() {
     int tamanhos[] = { 1000, 10000, 100000, 500000, 1000000 };
 
     printf("Iniciando testes de performance dos algoritmos...\n");
-    FILE *saida = fopen("resultados/resultados_3rep.csv", "w");
+    FILE *saida = fopen("resultados/resultados_5rep.csv", "w");
     if (!saida) {
         perror("Erro ao abrir arquivo CSV");
         return 1;
@@ -142,7 +142,7 @@ int main() {
     }
 
     fclose(saida);
-    printf("Todos os resultados foram salvos em 'resultados/resultados_3rep.csv'\n");
+    printf("Todos os resultados foram salvos em 'resultados/resultados_5rep.csv'\n");
     printf("Fim da execucao.\n");
     return 0;
 }
