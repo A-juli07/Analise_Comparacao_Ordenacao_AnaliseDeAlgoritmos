@@ -75,7 +75,7 @@ Gráficos gerados na pasta graficos/:
 ## Insights dos Resultados
 
 ### Número de Comparações(log) X Tamanho do Vetor
-####Entrada Ordenada
+#### Entrada Ordenada
   
 ![Entrada Ordenada](graficos/resultados_graficos_5rep/comparacoes_ordenado.png)
   
