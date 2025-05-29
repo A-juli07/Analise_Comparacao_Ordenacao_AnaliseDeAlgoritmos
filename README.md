@@ -17,6 +17,24 @@ Implementar e comparar diferentes algoritmos de ordenação em C, avaliando-os c
 - Ordenado decrescente (`reverse`)
 - Aleatório (`random`)
 
+## Estrutura de Diretórios
+
+├── algoritmos/              # Implementações dos algoritmos em C
+    ├── bubble_sort.c
+    ├── insertion_sort.c
+    ├── merge_sort.c
+    ├── quick_sort.c
+├── entradas/                # Arquivos de entrada (listas de números)
+├── resultados/              # Arquivos com os dados coletados (CSV)
+    └── resultados_3rep.csv
+├── graficos/                # Script Python e imagens geradas
+    ├── graficos.py
+    ├── graficos.py
+├── utils/                   # Utilitários em C
+   ├── gerar_entradas.c     # Gera os arquivos da pasta entradas/
+   └── medir_performance.c # Executa os testes e salva o CSV
+
+
 ## Como Executar
 
 1. **Clone o repositório:**
