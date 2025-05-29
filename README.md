@@ -19,7 +19,11 @@ Implementar e comparar diferentes algoritmos de ordenação em C, avaliando-os c
 
 ## Estrutura de Diretórios
 
-- Algoritmos : bubble_sort.c, insertion_sort.c, merge_sort.c, quick_sort.c;
+- Algoritmos :
+     - bubble_sort.c
+     - insertion_sort.c
+     - merge_sort.c
+     - quick_sort.c
 - Entradas : Entradas geradas como sorted, random e reverse entre 1000, 10000, 100000, 500000, 1000000;
 - Graficos :
      - graficos.py : Codigo para criação dos graficos.
